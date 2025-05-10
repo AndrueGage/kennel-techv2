@@ -1,12 +1,12 @@
-import { Controller, Get, UseGuards } from '@nestjs/common';
-import { JwtAuthGuard } from '../auth/jwt-auth.guard'; // Correct path to guard
-import { Request } from 'express';  // Import Request from 'express'
+import { Controller, Get, Request, UseGuards } from '@nestjs/common';
+import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+import { Request as ExpressRequest } from 'express';  
 
 @Controller('users')
 export class UserController {
   @Get('profile')
-  @UseGuards(JwtAuthGuard)  // Use the JWT guard for this route
-  getProfile(@new Request() req: Request) {
-    return req.user;  // Access the user from the request object
+  @UseGuards(JwtAuthGuard)
+  getProfile(@Request() req: ExpressRequest) {
+    return req.user;
   }
 }

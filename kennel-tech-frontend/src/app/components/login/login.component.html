@@ -1,0 +1,10 @@
+<form (ngSubmit)="onLogin()">
+  <label>Email</label>
+  <input name="email" required />
+
+  <label>Password</label>
+  <input name="password" type="password" required />
+
+  <button type="submit">Login</button>
+  <p *ngIf="errorMessage">{{ errorMessage }}</p>
+</form>
